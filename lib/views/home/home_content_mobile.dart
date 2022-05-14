@@ -6,7 +6,7 @@ class HomeContentMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      // height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(
           horizontal: 0, vertical: MediaQuery.of(context).size.height * 0.05),

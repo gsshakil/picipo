@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:picipo/routing/route_names.dart';
 import 'package:picipo/views/about/about_view.dart';
+import 'package:picipo/views/dashboard/dashboard_view.dart';
 import 'package:picipo/views/home/home_view.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -10,6 +11,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(const HomeView(), settings.name!);
     case AboutRoute:
       return _getPageRoute(const AboutView(), settings.name!);
+    case DashboardRoute:
+      return _getPageRoute(const DashboardView(), settings.name!);
     default:
       return _getPageRoute(const HomeView(), settings.name!);
   }
