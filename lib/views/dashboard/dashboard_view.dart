@@ -1,152 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:picipo/views/dashboard/balance_stats_row.dart';
+import 'package:picipo/views/dashboard/deposit_withdrawal_box.dart';
+import 'package:picipo/views/dashboard/last_quarter_bar_chart.dart';
+import 'package:picipo/views/dashboard/weekly_estimation_section.dart';
+import 'package:picipo/views/dashboard/weekly_estmimation_header.dart';
+import 'package:picipo/views/dashboard/weekly_profit_card.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
-class DashboardView extends StatelessWidget {
+class SalesData {
+  SalesData(this.year, this.sales);
+  final String year;
+  final double sales;
+}
+
+class DashboardView extends StatefulWidget {
   const DashboardView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Card(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'MasterNoded',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '895,78',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6!
-                                  .copyWith(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        BitcoinRow(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Card(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'MasterNoded',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '895,78',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6!
-                                  .copyWith(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        BitcoinRow(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Card(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'MasterNoded',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1!
-                                  .copyWith(fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '895,78',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6!
-                                  .copyWith(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        BitcoinRow(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  State<DashboardView> createState() => _DashboardViewState();
 }
 
-class BitcoinRow extends StatelessWidget {
-  const BitcoinRow({
-    Key? key,
-  }) : super(key: key);
-
+class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return ListView(
       children: [
-        Text('Bitcoin'),
-        Text('895,78'),
+        const BanlaceStatsRow(),
+        const SizedBox(height: 10),
+        const WeeklyEstimationSection(),
+        const SizedBox(height: 10),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            LastQuarterBarChart(),
+            DepositWithdrawelBox(),
+          ],
+        ),
       ],
     );
   }

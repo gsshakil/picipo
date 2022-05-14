@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:picipo/views/home/deposit_form.dart';
 
-class HomeContentMobile extends StatelessWidget {
-  const HomeContentMobile({Key? key}) : super(key: key);
+class StakeDepositForm extends StatefulWidget {
+  const StakeDepositForm({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    final TextEditingController _amountController = TextEditingController();
+  State<StakeDepositForm> createState() => _StakeDepositFormState();
+}
 
+class _StakeDepositFormState extends State<StakeDepositForm> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _amountController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width * 0.5,
       margin: EdgeInsets.symmetric(
-          horizontal: 0, vertical: MediaQuery.of(context).size.height * 0.05),
+        horizontal: MediaQuery.of(context).size.width * 0.15,
+        vertical: MediaQuery.of(context).size.height * 0.05,
+      ),
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
@@ -43,7 +49,7 @@ class HomeContentMobile extends StatelessWidget {
           'Employee Staking as a Service',
           style: Theme.of(context).textTheme.headline5,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 30),
         DepositForm(formKey: _formKey, amountController: _amountController),
       ]),
     );

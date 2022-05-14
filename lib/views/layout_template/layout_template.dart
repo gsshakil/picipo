@@ -23,7 +23,7 @@ class LayoutTemplate extends StatelessWidget {
             builder: (context, sizingInformation) => Scaffold(
               drawer:
                   sizingInformation.deviceScreenType == DeviceScreenType.mobile
-                      ? NavigationDrawer()
+                      ? const NavigationDrawer()
                       : null,
               backgroundColor: Colors.transparent,
               body: Container(

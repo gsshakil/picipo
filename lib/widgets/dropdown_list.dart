@@ -24,7 +24,7 @@ class _DropdownListState extends State<DropdownList> {
       imagePath: 'assets/ufarm-fav.png', name: 'UFARM');
   List<TokenDropDownModel> items = [
     const TokenDropDownModel(imagePath: 'assets/ufarm-fav.png', name: 'UFARM'),
-    const TokenDropDownModel(imagePath: 'assets/ufarm-fav.png', name: 'PICIPO'),
+    // const TokenDropDownModel(imagePath: 'assets/ufarm-fav.png', name: 'PICIPO'),
   ];
   @override
   Widget build(BuildContext context) {
