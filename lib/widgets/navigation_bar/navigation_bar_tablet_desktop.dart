@@ -58,16 +58,25 @@ class NavigationBarTabletDesktop extends StatelessWidget {
                 children: [
                   ShaderText(text: text),
                   const SizedBox(height: 5),
-                  ConnectButton(
-                      title: 'Check Balance',
-                      onPressed: () {
-                        provider.getBalance();
-                      }),
+                  ShaderText(text: 'Balance: ${provider.balacne}'),
+
+                  // provider.isLoading
+                  //     ? const SizedBox(
+                  //         width: 25,
+                  //         height: 25,
+                  //         child: CircularProgressIndicator(),
+                  //       )
+                  //     : ConnectButton(
+                  //         title: 'Check Balance',
+                  //         onPressed: () {
+                  //           print('object');
+                  //           provider.getBalance();
+                  //         }),
                 ],
               );
             } else if (provider.isConnected && !provider.isInOperatingChain) {
               text =
-                  'Wrong chain. Please connect to ${MetaMaskProvider.operatingChain}';
+                  'Wrong chain. Please connect to ${MetaMaskProvider.chainName}';
             } else if (provider.isEnabled && !provider.isConnected) {
               return ConnectButton(
                 title: 'CONNECT WALLET',
