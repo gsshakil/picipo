@@ -46,7 +46,7 @@ class _StakeDepositFormState extends State<StakeDepositForm> {
         ),
         const SizedBox(height: 20),
         Text(
-          'Employee Staking as a Service',
+          'Employee Staking As A Service',
           style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(height: 30),

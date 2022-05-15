@@ -1,10 +1,29 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:picipo/services/locator.dart';
 import 'package:picipo/views/layout_template/layout_template.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // const firebaseConfig = {
+  //   apiKey: "AIzaSyDyXC_jB_71TJutCVdLf28B-nuXneJDBQg",
+  //   authDomain: "picipo-24ea6.firebaseapp.com",
+  //   projectId: "picipo-24ea6",
+  //   storageBucket: "picipo-24ea6.appspot.com",
+  //   messagingSenderId: "105780646429",
+  //   appId: "1:105780646429:web:809fa06aba134e37dbacf4"
+  // };
+
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+    apiKey: "AIzaSyDyXC_jB_71TJutCVdLf28B-nuXneJDBQg",
+    appId: "1:105780646429:web:809fa06aba134e37dbacf4",
+    messagingSenderId: "105780646429",
+    projectId: "picipo-24ea6",
+  ));
+
   EasyLoading.instance
     ..displayDuration = const Duration(milliseconds: 2000)
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle

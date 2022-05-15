@@ -28,18 +28,35 @@ class _LastQuarterBarChartState extends State<LastQuarterBarChart> {
     return Expanded(
       flex: 3,
       child: Card(
-        child: SfCartesianChart(
-            primaryXAxis: CategoryAxis(),
-            primaryYAxis: NumericAxis(minimum: 0, maximum: 100, interval: 10),
-            tooltipBehavior: _tooltip,
-            series: <ChartSeries<_ChartData, String>>[
-              ColumnSeries<_ChartData, String>(
-                  dataSource: data,
-                  xValueMapper: (_ChartData data, _) => data.x,
-                  yValueMapper: (_ChartData data, _) => data.y,
-                  name: 'Gold',
-                  color: Color.fromARGB(255, 10, 161, 104))
-            ]),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Last 3 Months Profit',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6!
+                    .copyWith(fontWeight: FontWeight.bold, color: Colors.black87),
+              ),
+              const SizedBox(height: 30),
+              SfCartesianChart(
+                  primaryXAxis: CategoryAxis(),
+                  primaryYAxis:
+                      NumericAxis(minimum: 0, maximum: 100, interval: 10),
+                  tooltipBehavior: _tooltip,
+                  series: <ChartSeries<_ChartData, String>>[
+                    ColumnSeries<_ChartData, String>(
+                        dataSource: data,
+                        xValueMapper: (_ChartData data, _) => data.x,
+                        yValueMapper: (_ChartData data, _) => data.y,
+                        name: 'Gold',
+                        color: Color.fromARGB(255, 10, 161, 104))
+                  ]),
+            ],
+          ),
+        ),
       ),
     );
   }

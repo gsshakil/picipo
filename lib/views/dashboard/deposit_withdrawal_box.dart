@@ -11,7 +11,7 @@ class DepositWithdrawelBox extends StatelessWidget {
         flex: 2,
         child: Card(
           child: Padding(
-            padding: const EdgeInsets.all(33),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 81),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               Row(
@@ -21,7 +21,7 @@ class DepositWithdrawelBox extends StatelessWidget {
                       color: Colors.amber,
                       onPressed: () {},
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                        padding: const EdgeInsets.symmetric(vertical: 20.0),
                         child: Center(
                           child: Text(
                             'DEPOSIT',
@@ -57,7 +57,7 @@ class DepositWithdrawelBox extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Card(
-                color: Color.fromARGB(255, 250, 236, 241),
+                color: Color.fromARGB(255, 236, 157, 182),
                 child: Padding(
                   padding: EdgeInsets.all(40),
                   child: Row(

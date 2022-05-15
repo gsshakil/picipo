@@ -5,6 +5,8 @@ import 'package:picipo/providers/metamask_provider.dart';
 import 'package:picipo/routing/route_names.dart';
 import 'package:picipo/services/locator.dart';
 import 'package:picipo/services/navigation_services.dart';
+import 'package:picipo/utils/constanst.dart';
+import 'package:picipo/utils/firebase_helpers/firestore_methods.dart';
 import 'package:picipo/widgets/dropdown_list.dart';
 import 'package:provider/provider.dart';
 
@@ -64,14 +66,43 @@ class DepositForm extends StatelessWidget {
                           if (_formKey.currentState!.validate()) {
                             EasyLoading.show(
                                 status:
-                                    'Employee Staking as a Service\n In Progress....');
+                                    'Employee Staking As A Service\n In Progress....');
                             var result = await provider.makeTransfer(
                               double.tryParse(_amountController.text),
                             );
-                            EasyLoading.dismiss();
+
                             if (result == false) {
+                              EasyLoading.dismiss();
                               EasyLoading.showError('Transaction Failed');
                             } else {
+                              //upload transaction details to firestore
+                              try {
+                                String res = await FireStoreMethods()
+                                    .uploadtransactionHistory(
+                                  userAddress: provider.currentAddress,
+                                  destAddress: DEFAULT_ADDRESS,
+                                  trxHash: result,
+                                  amount: _amountController.text,
+                                );
+                                print('Firebase response $res');
+                                if (res == 'success') {
+                                  EasyLoading.showSuccess(
+                                      'Uploading transaction history to firestore successful!');
+                                  print(
+                                      'Success: Uploading transaction history to firestore successful ');
+                                } else {
+                                  EasyLoading.showError(
+                                      'Uploading transaction history to firestore failed');
+
+                                  print(
+                                      'Error: Uploading transaction history to firestore failed ');
+                                }
+                              } catch (e) {
+                                print(
+                                    'Error: Uploading transaction history to firestore failed $e ');
+                              }
+                              EasyLoading.dismiss();
+
                               //Show Success Message
                               EasyLoading.showSuccess(
                                   'Transaction Successful!');

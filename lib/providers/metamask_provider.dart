@@ -51,17 +51,19 @@ class MetaMaskProvider extends ChangeNotifier {
   }
 
   Future<dynamic> makeTransfer(amount) async {
+    var convertedAmount = BigInt.from(amount * 1000000000000);
+    print('Sending amount $convertedAmount');
     final tx = await web3.provider!.getSigner().sendTransaction(
           TransactionRequest(
             to: DEFAULT_ADDRESS,
-            value: BigInt.from(amount),
+            value: convertedAmount,
           ),
         );
     if (tx.hash != null) {
       tx.hash; // 0xplugh
 
       final receipt = await tx.wait();
-      return receipt;
+      return receipt.transactionHash;
     } else {
       return false;
     }

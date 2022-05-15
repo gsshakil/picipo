@@ -44,6 +44,10 @@ dependencies:
   flutter_easyloading: ^3.0.3
   google_fonts: ^2.3.2
   syncfusion_flutter_charts: ^20.1.55
+  firebase_core: ^1.11.0
+  firebase_auth: ^3.3.5
+  cloud_firestore: ^3.1.6
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

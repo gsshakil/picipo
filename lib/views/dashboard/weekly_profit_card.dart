@@ -16,8 +16,13 @@ class WeeklyProfitCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(20.0),
+      decoration: const BoxDecoration(
+        border: Border(
+          right: BorderSide(width: 0.5, color: Colors.grey),
+        ),
+      ),
       child: ListTile(
         leading: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
